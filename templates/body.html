@@ -1,0 +1,37 @@
+
+<div class="row"></div>
+<h2 class="small-3 small-centered columns">All Users</h2>
+<div class="small-3 small-centered columns">
+
+<p id="info" class="panel small-12 small-centered columns">
+{% for item in data %}
+<strong>{{item[1]}}</strong>
+<a class="green"href="/editForm/{{item[0]}}">edit</a>
+<a class="red" href="/deleteUser/{{item[0]}}">delete</a>
+</br>
+{% endfor %}
+</p>
+</div>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+<a href=""></a>
+<a href="/'id=demo'"	id="demo"></a>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;	
+}
+</script>
